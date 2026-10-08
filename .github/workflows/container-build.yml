@@ -1,0 +1,19 @@
+name: Build container
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Build image
+        run: docker build --file container/Dockerfile --tag guacamole-http-remoteapp:ci container
