@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Simulação de configuração RDP no Guacamole</title>
+  <desc id="desc">Formulário ilustrativo com host remoteapp, porta 3389, usuário dinâmico, senha mascarada e programa inicial Firefox RemoteApp</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#101324"/><stop offset="1" stop-color="#191d34"/></linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#a34ef5"/><stop offset="1" stop-color="#7044f3"/></linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#000" flood-opacity=".35"/></filter>
+  </defs>
+  <rect width="1200" height="900" fill="#090b15"/>
+  <rect x="60" y="48" width="1080" height="804" rx="22" fill="url(#bg)" stroke="#343954" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="60" y="48" width="1080" height="72" rx="22" fill="#14182b"/>
+  <path d="M60 98v22h1080V98" fill="#14182b"/>
+  <circle cx="96" cy="84" r="10" fill="#a34ef5"/>
+  <text x="122" y="92" fill="#f5f6ff" font-family="Segoe UI,Arial,sans-serif" font-size="24" font-weight="700">Guacamole · Nova conexão</text>
+  <text x="100" y="162" fill="#aeb7d2" font-family="Segoe UI,Arial,sans-serif" font-size="17">SIMULAÇÃO ILUSTRATIVA · os rótulos podem variar por versão</text>
+
+  <rect x="100" y="190" width="1000" height="92" rx="14" fill="#171b30" stroke="#343954"/>
+  <text x="128" y="226" fill="#9fa9c8" font-family="Segoe UI,Arial,sans-serif" font-size="16">Nome da conexão</text>
+  <rect x="128" y="238" width="944" height="34" rx="7" fill="#0d1020" stroke="#454b69"/>
+  <text x="146" y="262" fill="#eff1fb" font-family="Segoe UI,Arial,sans-serif" font-size="17">HTTP RemoteApp - Portal de teste</text>
+
+  <rect x="100" y="300" width="1000" height="70" rx="14" fill="#171b30" stroke="#343954"/>
+  <text x="128" y="328" fill="#9fa9c8" font-family="Segoe UI,Arial,sans-serif" font-size="16">Protocolo</text>
+  <rect x="128" y="338" width="944" height="26" rx="6" fill="#0d1020" stroke="#454b69"/>
+  <text x="146" y="358" fill="#eff1fb" font-family="Segoe UI,Arial,sans-serif" font-size="16">RDP</text>
+  <path d="m1043 347 9 9 9-9" fill="none" stroke="#8f99b6" stroke-width="2"/>
+
+  <text x="102" y="418" fill="#dce0f1" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="700">Rede e autenticação</text>
+  <rect x="100" y="434" width="490" height="104" rx="14" fill="#171b30" stroke="#343954"/>
+  <text x="128" y="466" fill="#9fa9c8" font-family="Segoe UI,Arial,sans-serif" font-size="16">Hostname</text>
+  <rect x="128" y="478" width="434" height="43" rx="7" fill="#0d1020" stroke="#454b69"/>
+  <text x="146" y="506" fill="#eff1fb" font-family="Consolas,monospace" font-size="17">remoteapp</text>
+
+  <rect x="610" y="434" width="490" height="104" rx="14" fill="#171b30" stroke="#343954"/>
+  <text x="638" y="466" fill="#9fa9c8" font-family="Segoe UI,Arial,sans-serif" font-size="16">Port</text>
+  <rect x="638" y="478" width="434" height="43" rx="7" fill="#0d1020" stroke="#454b69"/>
+  <text x="656" y="506" fill="#eff1fb" font-family="Consolas,monospace" font-size="17">3389</text>
+
+  <rect x="100" y="554" width="490" height="104" rx="14" fill="#171b30" stroke="#343954"/>
+  <text x="128" y="586" fill="#9fa9c8" font-family="Segoe UI,Arial,sans-serif" font-size="16">Username</text>
+  <rect x="128" y="598" width="434" height="43" rx="7" fill="#0d1020" stroke="#454b69"/>
+  <text x="146" y="626" fill="#eff1fb" font-family="Consolas,monospace" font-size="15">remote-${GUAC_DATE}-${GUAC_TIME}</text>
+
+  <rect x="610" y="554" width="490" height="104" rx="14" fill="#171b30" stroke="#343954"/>
+  <text x="638" y="586" fill="#9fa9c8" font-family="Segoe UI,Arial,sans-serif" font-size="16">Password</text>
+  <rect x="638" y="598" width="434" height="43" rx="7" fill="#0d1020" stroke="#454b69"/>
+  <text x="656" y="626" fill="#eff1fb" font-family="Segoe UI,Arial,sans-serif" font-size="18">••••••••••••••••</text>
+  <text x="1067" y="626" fill="#747f9e" font-family="Segoe UI,Arial,sans-serif" font-size="14" text-anchor="end">segredo</text>
+
+  <text x="102" y="704" fill="#dce0f1" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="700">Sessão</text>
+  <rect x="100" y="720" width="1000" height="96" rx="14" fill="#171b30" stroke="#343954"/>
+  <text x="128" y="752" fill="#9fa9c8" font-family="Segoe UI,Arial,sans-serif" font-size="16">Initial program / Programa inicial</text>
+  <rect x="128" y="764" width="944" height="38" rx="7" fill="#0d1020" stroke="#7350e8" stroke-width="2"/>
+  <text x="146" y="790" fill="#f4f0ff" font-family="Consolas,monospace" font-size="16">/usr/local/bin/firefox-session https://example.org</text>
+
+  <rect x="100" y="826" width="1000" height="2" fill="url(#accent)"/>
+  <text x="100" y="862" fill="#9fa9c8" font-family="Segoe UI,Arial,sans-serif" font-size="15">Conecte guacd e remoteapp à mesma rede Docker. A URL será aberta no Firefox dentro do container.</text>
+</svg>
