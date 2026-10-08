@@ -14,10 +14,14 @@ case "$URL" in
 esac
 
 PROFILE_DIR="$(mktemp -d -t firefox-session-XXXXXXXX)"
+WM_PID=""
+DBUS_SESSION_BUS_PID=""
 cleanup() {
+    [ -n "$WM_PID" ] && kill "$WM_PID" 2>/dev/null || true
+    [ -n "$DBUS_SESSION_BUS_PID" ] && kill "$DBUS_SESSION_BUS_PID" 2>/dev/null || true
     rm -rf "$PROFILE_DIR"
 }
-trap cleanup EXIT INT TERM
+trap cleanup EXIT
 
 if command -v dbus-launch >/dev/null 2>&1; then
     eval "$(dbus-launch --sh-syntax)"
@@ -27,8 +31,9 @@ fi
 openbox &
 WM_PID=$!
 sleep 0.3
-firefox-esr --no-remote --profile "$PROFILE_DIR" --kiosk "$URL"
-STATUS=$?
-kill "$WM_PID" 2>/dev/null || true
-[ -n "${DBUS_SESSION_BUS_PID:-}" ] && kill "$DBUS_SESSION_BUS_PID" 2>/dev/null || true
+if firefox-esr --no-remote --profile "$PROFILE_DIR" --kiosk "$URL"; then
+    STATUS=0
+else
+    STATUS=$?
+fi
 exit "$STATUS"
