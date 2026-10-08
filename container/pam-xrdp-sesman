@@ -1,0 +1,11 @@
+auth       required     pam_exec.so expose_authtok quiet /usr/local/bin/xrdp-auth.sh
+auth       required     pam_permit.so
+
+account    required     pam_permit.so
+
+session    required     pam_mkhomedir.so skel=/etc/skel umask=0077 silent
+session    required     pam_loginuid.so
+session    optional     pam_keyinit.so force revoke
+session    required     pam_env.so readenv=1
+session    required     pam_env.so readenv=1 envfile=/etc/default/locale
+session    required     pam_unix.so
