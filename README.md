@@ -17,7 +17,7 @@ Each RDP session gets a temporary Firefox profile. The browser opens the URL sup
 
 ## Status
 
-The project is being prepared for reproducible container builds. Validate it in a test environment before using it with sensitive systems.
+The repository includes the container source and instructions for configuring it with Apache Guacamole. Review the [security notes](docs/SECURITY.md) and validate the setup in a test environment before using it with sensitive systems.
 
 ## Build and run
 
@@ -51,4 +51,4 @@ The workflow builds the image on GitHub Actions without publishing it. Docker Hu
 
 ## License
 
-No license has been selected yet. Until one is added, all rights remain reserved.
+This project is proprietary and all rights are reserved by the author. No permission to use, modify, or redistribute the code is granted without prior written authorization. See [LICENSE](LICENSE).
