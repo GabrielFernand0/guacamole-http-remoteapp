@@ -1,0 +1,13 @@
+.env
+.env.*
+!.env.example
+*.tar
+*.tar.gz
+*.log
+logs/
+tmp/
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+.idea/
