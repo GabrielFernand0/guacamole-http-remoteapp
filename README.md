@@ -1,56 +1,54 @@
 # Guacamole HTTP RemoteApp
 
-A containerized browser session that lets Apache Guacamole users open HTTP and HTTPS applications through an RDP connection. The container runs xRDP and starts Firefox in kiosk mode for each session.
+A small xRDP container that opens HTTP/HTTPS applications in Firefox kiosk mode, so users can reach web interfaces through an Apache Guacamole RDP connection.
 
-This repository is an independent community project. It is not maintained or endorsed by the Apache Guacamole project.
+This is an independent community project, not an official Apache Guacamole component.
+
+![HTTP RemoteApp logo](assets/logo.svg)
 
 ## How it works
 
 ```text
-Apache Guacamole / guacd
-        │ RDP
-        ▼
-  RemoteApp container
-  xRDP → isolated Firefox session
-        │ HTTP or HTTPS
-        ▼
-   Web application
+Apache Guacamole / guacd ── RDP ──> RemoteApp container ── HTTP/HTTPS ──> web application
+                                     xRDP + Firefox kiosk
 ```
 
-Each RDP session gets its own temporary Firefox profile. An optional browser extension can show a short connection screen, enforce a timeout, and fill a login form when credentials are explicitly supplied in the Guacamole connection parameters.
+Each RDP session gets a temporary Firefox profile. The browser opens the URL supplied to the session, or `DEFAULT_URL` when no URL is supplied. This initial build intentionally does not include credential autofill or automatic acceptance of invalid TLS certificates.
 
-## Current status
+## Status
 
-This repository is being prepared for a reproducible build. The project is experimental; review the security notes and validate it in a test environment before using it with sensitive systems.
+The project is being prepared for reproducible container builds. Validate it in a test environment before using it with sensitive systems.
 
 ## Build and run
 
 Requirements: Docker Engine with the Compose plugin.
 
 1. Copy `.env.example` to `.env` and set a strong, unique `RDP_MASTER_PASSWORD`.
-2. Build and start the container:
+2. Build and start:
 
    ```sh
    docker compose up --build -d
    ```
 
-3. For a local RDP client, connect to `127.0.0.1:3389`. For Guacamole, connect the `guacd` service and this container to a shared Docker network and use the container service name as the RDP hostname.
+3. A local RDP client can connect to `127.0.0.1:3389`. For Guacamole, place `guacd` and this service on the same Docker network and use the service name `remoteapp` as the RDP host.
 
-The Compose example binds RDP to loopback by default. Do not expose port 3389 to an untrusted network.
+The example binds RDP to loopback. Do not expose port 3389 to an untrusted network.
 
 ## Configuration
 
 | Variable | Purpose | Default |
 | --- | --- | --- |
 | `RDP_MASTER_PASSWORD` | Shared password required by xRDP | Required |
-| `DEFAULT_URL` | URL opened when the RDP connection does not provide one | `about:blank` |
+| `RDP_BIND_ADDRESS` | Host interface for the local RDP port | `127.0.0.1` |
+| `RDP_PORT` | Host RDP port | `3389` |
+| `DEFAULT_URL` | Fallback URL | `about:blank` |
 
-See [docs/CONFIGURATION.md](docs/CONFIGURATION.md) for Guacamole connection setup and [docs/SECURITY.md](docs/SECURITY.md) for security considerations.
+See [configuration](docs/CONFIGURATION.md) and [security notes](docs/SECURITY.md).
 
 ## Image distribution
 
-The build workflow will first compile the image without publishing it. Once the source and release process are ready, versioned images can be published to Docker Hub for discovery and distribution.
+The workflow builds the image on GitHub Actions without publishing it. Docker Hub is a good target for a later public release; during development, keep the source and any registry package private.
 
 ## License
 
-No license has been selected for this repository yet. Until one is added, all rights remain reserved.
+No license has been selected yet. Until one is added, all rights remain reserved.
