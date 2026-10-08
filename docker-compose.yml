@@ -1,0 +1,16 @@
+services:
+  remoteapp:
+    build:
+      context: ./container
+      dockerfile: Dockerfile
+    image: guacamole-http-remoteapp:local
+    restart: unless-stopped
+    ports:
+      - "${RDP_BIND_ADDRESS:-127.0.0.1}:${RDP_PORT:-3389}:3389"
+    environment:
+      RDP_MASTER_PASSWORD: ${RDP_MASTER_PASSWORD:?Set RDP_MASTER_PASSWORD in .env}
+      DEFAULT_URL: ${DEFAULT_URL:-about:blank}
+    shm_size: "1gb"
+    tmpfs:
+      - /tmp:size=2g
+      - /run:size=128m
