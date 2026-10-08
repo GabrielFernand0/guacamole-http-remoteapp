@@ -22,7 +22,7 @@ RUN chmod 0755 /usr/local/bin/xrdp-auth.sh /usr/local/bin/firefox-session \
  && mkdir -p /var/run/xrdp /run/xrdp /run/xrdp/sockdir \
  && chown xrdp:xrdp /var/run/xrdp /run/xrdp /run/xrdp/sockdir \
  && chmod 1777 /run/xrdp/sockdir \
- && adduser xrdp ssl-cert || true
+ && adduser xrdp ssl-cert
 
 EXPOSE 3389
 ENTRYPOINT ["/usr/bin/tini", "--", "/usr/local/bin/entrypoint.sh"]
